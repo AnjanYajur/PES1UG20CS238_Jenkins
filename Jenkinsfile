@@ -9,13 +9,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'make\n'
+                g++ -o my_program my_program.cpp
             }
         }
 
         stage('Test') {
             steps {
-                currentBuild.result = 'FAILURE'
+                #!/bin/bash
+                ./my_program > output.txt
+                cat output.txt
             }
         }
 
