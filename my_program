@@ -1,0 +1,7 @@
+#include <iostream>
+using namespace std;
+
+int main(void) {
+  cout << "I am using pipeline\n";
+  return 0;
+}
