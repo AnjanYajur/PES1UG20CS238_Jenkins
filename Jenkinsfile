@@ -21,4 +21,5 @@ pipeline {
         success {
             echo 'Pipeline successfull'
         }
+    }
 }
