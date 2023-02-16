@@ -15,8 +15,10 @@ pipeline {
         }
     }
     post {
-            failure {
-                echo 'Pipeline Failed'
-            }
+        failure {
+            echo 'Pipeline Failed'
+        }
+        success {
+            echo 'Pipeline successfull'
         }
 }
