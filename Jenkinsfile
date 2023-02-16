@@ -1,40 +1,22 @@
 pipeline {
     agent any
-
     stages {
-      stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
         stage('Build') {
             steps {
-                g++ -o my_program my_program.cpp
+            sh "make -C main"
+                echo 'Build stage completed'
             }
         }
-
         stage('Test') {
             steps {
-                #!/bin/bash
-                ./my_program > output.txt
-                cat output.txt
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'deploy\n'
+                sh "/var/jenkins_home/workspace/PES1UG20CS238_Jenkins/main/hello_exec"
+                echo 'Testing stage completed'
             }
         }
     }
-
     post {
-        always {
-            script {
-                if (currentBuild.result == 'FAILURE') {
-                    echo 'pipeline failed'
-                }
+            failure {
+                echo 'Pipeline Failed'
             }
         }
-    }
 }
